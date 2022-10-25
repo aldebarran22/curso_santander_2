@@ -1,0 +1,16 @@
+alf = "abc...xyzABC...XYZ0..9"
+
+mensaje = "hola"
+
+L = [10, 12, 22, 0]
+K=5
+L2 = [15, 17, 27, 5]
+HG67
+
+telefono = "699807944"
+K = 7
+
+"9" = (39 + k) % len(alf)
+
+
+
