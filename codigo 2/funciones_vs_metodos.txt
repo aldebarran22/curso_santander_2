@@ -1,0 +1,8 @@
+str()  --> __str__()
+len()  --> __len__()
+del()  --> __del__() DESTRUCTOR!
+repr() --> __repr__()
+
+
++	--> __add__
+==	--> __eq__
