@@ -39,6 +39,9 @@ class Nube:
         pos = distancias.index(dMasCercana)       
         return self.puntos[pos]
 
+    def __bool__(self):
+        return len(self.puntos) != 0
+
     def __len__(self):
         return len(self.puntos)
 
@@ -73,5 +76,9 @@ if __name__ == '__main__':
     print('Segunda vez')
     for p in nube:
         print(p)
+
+    print('bool',bool(nube))
+    nube.puntos.clear()
+    print('bool',bool(nube))
 
     

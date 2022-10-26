@@ -2,6 +2,8 @@
 Ejemplo de POO en Python
 """
 
+import json
+
 class Persona:
     """
     implementación de la clase Persona
@@ -46,6 +48,12 @@ class Persona:
         Persona.num_instancias -= 1
         #print('Eliminando a', self.nombre)
 
+class Operador(Persona):
+    pass
+
+class Director(Persona):
+    pass
+
 class Guia(Persona):
 
     def __init__(self, nombre="", edad=0, altura=0.0, ambito='', idiomas=[]):
@@ -56,6 +64,10 @@ class Guia(Persona):
     def hablar(self, other=None):
         if not other:
             Persona.hablar(self)
+
+        elif not isinstance(other,Guia):
+            raise ValueError('Se necesita otro guia')
+
         else:
             c1 = set(self.idiomas)
             c2 = set(other.idiomas)
@@ -115,7 +127,24 @@ def testGuia():
     g1.hablar(g2)
 
 if __name__ == '__main__':
-   testGuia()
+    p1 = Persona("Juan",34,altura=1.77)
+    p2 = Persona("Ana",39,altura=1.8)
+    p3 = Persona("Sara",29,altura=1.66)
+    L = [p1,p2,p3]
 
+    D = [obj.__dict__ for obj in L]
+    print(D, type(D))
+    cad = json.dumps(D)
+    print(cad, type(cad))
+    D2 = json.loads(cad)
+    print(D2[0]['nombre'])
+
+
+    """
+    testGuia()
+    print(issubclass(Guia, Persona))
+    L = [c.__name__ for c in Persona.__subclasses__()]
+    print(L)
+    """
 
 

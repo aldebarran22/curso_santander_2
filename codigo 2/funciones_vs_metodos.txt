@@ -2,6 +2,8 @@ str()  --> __str__()
 len()  --> __len__()
 del()  --> __del__() DESTRUCTOR!
 repr() --> __repr__()
+bool() --> __bool__()
+hash() --> __hash__()
 
 
 +	--> __add__
