@@ -46,7 +46,27 @@ class Persona:
         Persona.num_instancias -= 1
         #print('Eliminando a', self.nombre)
 
-if __name__ == '__main__':
+class Guia(Persona):
+
+    def __init__(self, nombre="", edad=0, altura=0.0, ambito='', idiomas=[]):
+        Persona.__init__(self, nombre, edad, altura) # super().__init__(nombre, edad, altura)
+        self.ambito = ambito
+        self.idiomas = idiomas
+
+    def hablar(self, other=None):
+        if not other:
+            Persona.hablar(self)
+        else:
+            c1 = set(self.idiomas)
+            c2 = set(other.idiomas)
+
+            inter = c1 & c2
+            if len(inter) == 0:
+                raise ValueError('No coinciden en ningún idioma ...')
+            else:
+                print(self.nombre,'y',other.nombre,'pueden hablar en'," o ".join(inter))
+
+def testPersona():
     print(Persona.getNumInstancias(),'instancias')
     p1 = Persona("Juan",34,altura=1.77)
     p2 = Persona("Ana",34,altura=1.77)
@@ -85,6 +105,17 @@ if __name__ == '__main__':
     print(p1)
     Persona.cumple(p1)
     print(p1)
+
+def testGuia():
+    g1 = Guia("Raul",34,1.77,'N', ['ingles','español'])
+    g2 = Guia("Sandra",29,1.79,'I', ['ingles','frances','italiano','español'])
+    print(g1)
+    g1.cumple()
+    print(g1)
+    g1.hablar(g2)
+
+if __name__ == '__main__':
+   testGuia()
 
 
 
