@@ -37,7 +37,7 @@ def csvToFix(path,pathD, dicc, sep_col=','):
 
             tupla = tuple(campos)
             cadenaFormato = getCadenaFormato(dicc)
-            #print(cadenaFormato, tupla)
+            print(cadenaFormato, tupla)
             fich2.write( (cadenaFormato % tupla) +"\n")            
 
     except Exception as e:
