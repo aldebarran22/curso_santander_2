@@ -3,18 +3,44 @@ Convertir un bloque de registros en CSV a una lista de diccionario
 """
 
 def csvToFix(path,pathD, dicc, sep_col=','):
+
+    def getCadenaFormato(dicc):
+        cad = ""
+        for tipo, tam in dicc.values():
+            cad += "%"+ str(tam) + tipo
+        return cad
+
     fich = None
     fich2 = None
     try:
         fich = open(path, "r")
         fich2 = open(pathD, "w")
+        valores = list(dicc.values())
+        cab = None
 
-        for linea in fich:
+        for linea in fich:    
             linea = linea.rstrip()
-            print(linea)
-            fich2.write(linea.upper()+"\n")
 
-    except IOError as e:
+            if not cab:
+                fich2.write(linea+"\n")
+                cab = True
+                continue
+
+            campos = linea.split(sep_col)
+            for pos, t in enumerate(valores):
+                tipo, tam = t
+                if tipo == 'd':
+                    campos[pos] = int(campos[pos])
+
+                if tipo == 'f':
+                    campos[pos] = float(campos[pos])
+
+            tupla = tuple(campos)
+            cadenaFormato = getCadenaFormato(dicc)
+            #print(cadenaFormato, tupla)
+            fich2.write( (cadenaFormato % tupla) +"\n")            
+
+    except Exception as e:
         raise e
 
     finally:
@@ -74,7 +100,7 @@ def testCSVToFix():
     fichero = "Pedidos.txt"
     fichero2 = "Pedidos.dat"
     cab = "idpedido;cliente;idempleado;idempresa;importe;pais"
-    tam = (5,5,3,3,8,30)
+    tam = (5,-5,3,3,8,-30)
     tipos = ('d','s','d','d','f','s')
     tuplas = tuple(zip(tipos,tam))
     d = dict(zip(cab.split(';'), tuplas))
