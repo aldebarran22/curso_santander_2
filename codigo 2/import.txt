@@ -1,0 +1,13 @@
+es.santander.app
+
+
+principal.py  -> import es.santander.app.modulo1
+es
+  __init__.py
+
+  santander
+     __init__.py
+
+     app
+        __init__.py
+        modulo1.py

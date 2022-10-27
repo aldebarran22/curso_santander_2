@@ -1,0 +1,16 @@
+Estructura aplicación
+
+
+app  <dir>
+	principal.py
+
+	modulos <dir>
+	   __init__.py
+
+           tiempo <dir>
+		__init__.py
+	        fecha.py
+	        hora.py
+                fecha_hora.py
+                tiempoerror.py
+               

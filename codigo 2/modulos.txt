@@ -1,0 +1,39 @@
+import mod1,mod2,mod3
+from modulo import fun1,fun2,fun3
+import modulo as alias
+
+import paquete1.subpaquete1.modulo
+
+paquete1.subpaquete1.modulo.funcion()
+
+from paquete1.subpaquete1.modulo import funcion
+
+from modulo import *
+
+modulo1.py
+	def funcion1():
+		pass
+
+
+modulo2.py
+	def funcion1():
+		pass
+
+pruebas.py
+import modulo1
+import modulo2
+
+modulo1.funcion()
+modulo2.funcion()
+
+
+try:
+	import modulo as m 
+except:
+	import modulo2 as m (versión estandar)
+
+
+
+
+
+
